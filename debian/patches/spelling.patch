@@ -1,0 +1,131 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Mon, 06 Jul 2015 14:07:11 +0200
+Description: Fix some spelling issues in manpages
+
+--- a/man/func/gl_get_line.in
++++ b/man/func/gl_get_line.in
+@@ -510,8 +510,8 @@ system-wide configuration commands from
+ configuration commands from an optional \f3\&.teclarc\f1 file in the
+ user's home directory. Note that the arguments are listed in ascending
+ order of priority, with the contents of \f3app_string\f1 being
+-potentially overriden by commands in \f3app_file\f1, and commands in
+-\f3app_file\f1 potentially being overriden by commands in
++potentially overridden by commands in \f3app_file\f1, and commands in
++\f3app_file\f1 potentially being overridden by commands in
+ \f3user_file\f1.
+ .sp
+ You can call this function as many times as needed, the results being
+@@ -636,7 +636,7 @@ completions without touching the input l
+ option is selected by specifying a value of \f30\f1, and the
+ latter by specifying a value of \f31\f1. The \f3name\f1
+ argument specifies the name by which configuration files and
+-future invokations of this function should refer to the
++future invocations of this function should refer to the
+ action. This must either be the name of an existing
+ completion action to be changed, or be a new unused name for
+ a new action. Finally, the \f3keyseq\f1 argument specifies
+@@ -809,7 +809,7 @@ The \f3max_lines\f1 must be either -1 to
+ history list be saved, or a positive number specifying a ceiling on
+ how many of the most recent lines should be saved.
+ .sp
+-Both fuctions return non-zero on error, after writing an error message
++Both functions return non-zero on error, after writing an error message
+ to stderr. Note that \f3gl_load_history()\f1 does not consider the
+ non-existence of a file to be an error.
+ 
+@@ -834,7 +834,7 @@ but it can be changed subsequently by ca
+ The integer identifier \f3id\f1 can be any number chosen by the
+ application, but note that \f3gl_save_history()\f1 and
+ \f3gl_load_history()\f1 preserve the association between identifiers
+-and historical input lines between program invokations, so you should
++and historical input lines between program invocations, so you should
+ choose fixed identifiers for the different types of input line used by
+ your application.
+ .sp
+@@ -946,7 +946,7 @@ history list can be turned off by callin
+ 
+ If this function is called with its \f3enable\f1 argument set to
+ \f30\f1, \f3gl_get_line()\f1 won't automatically archive subsequently
+-entered lines. Automatic archiving can be reenabled at a later time,
++entered lines. Automatic archiving can be re-enabled at a later time,
+ by calling this function again, with its \f3enable\f1 argument set to
+ 1.  While automatic history archiving is disabled, the calling
+ application can use the \f3gl_append_history()\f1 to append lines to
+@@ -1008,7 +1008,7 @@ of the individual lines. For example, a
+ store 10 lines of average length 100 bytes, or 2 lines of average
+ length 50 bytes. Although the buffer is never expanded when new lines
+ are added, a list of pointers into the buffer does get expanded when
+-needed to accomodate the number of lines currently stored in the
++needed to accommodate the number of lines currently stored in the
+ buffer. To place an upper limit on the number of lines in the buffer,
+ and thus a ceiling on the amount of memory used in this list, you can
+ call the \f3gl_limit_history()\f1 function.
+@@ -1471,7 +1471,7 @@ or \f3-1\f1 if no signals were received.
+ .sp
+ On systems that support it, when a SIGWINCH (window change) signal is
+ received, \f3gl_get_line()\f1 queries the terminal to find out its new
+-size, redraws the current input line to accomodate the new size, then
++size, redraws the current input line to accommodate the new size, then
+ returns to waiting for keyboard input from the user. Unlike other
+ signals, this signal isn't resent to the application.
+ .sp
+@@ -1665,7 +1665,7 @@ longer input line, this will have the sa
+ line that already contains part of the displayed input line.
+ This doesn't do any harm, but it looks a bit ugly, which is
+ why the \f3GL_SUSPEND_INPUT\f1 combination is better if you
+-know that you are always going to be writting to the
++know that you are always going to be writing to the
+ terminal.
+ .sp
+ The \f3after\f1 argument, which determines what
+@@ -1942,7 +1942,7 @@ new dimensions of the terminal, and must
+ systems that do support \f3ioctl(TIOCGWINSZ)\f1, this function first
+ calls \f3ioctl(TIOCSWINSZ)\f1 to tell the terminal driver about the
+ change in size. In non-blocking server-I/O mode, if a line is
+-currently being input, the input line is then redrawn to accomodate
++currently being input, the input line is then redrawn to accommodate
+ the changed size. Finally the new values are recorded in \f3gl\f1 for
+ future use by \f3gl_get_line()\f1.
+ .sp
+@@ -2130,7 +2130,7 @@ to another program or redirected to a fi
+ \f3def_width\f1 parameter is used as the terminal width.
+ 
+ The \f3indentation\f1 argument specifies the number of characters to
+-use to indent each line of ouput. The \f3fill_char\f1 argument
++use to indent each line of output. The \f3fill_char\f1 argument
+ specifies the character that will be used to perform this indentation.
+ 
+ The \f3prefix\f1 argument can either be \f3NULL\f1, or be a string to
+--- a/man/func/gl_io_mode.in
++++ b/man/func/gl_io_mode.in
+@@ -374,7 +374,7 @@ configure the arguments of \f3select()\f
+ calls to these functions, then the signal will not be seen by these
+ functions, which will then not be aborted. If these functions are
+ waiting for keyboard input from the user when the signal is received,
+-and the signal handler arranges to redraw the input line to accomodate
++and the signal handler arranges to redraw the input line to accommodate
+ a terminal resize or the resumption of the process, then this
+ redisplay will be end up being delayed until the user hits the next
+ key. Apart from puzzling the user, this clearly isn't a serious
+--- a/man/misc/tecla.in
++++ b/man/misc/tecla.in
+@@ -805,7 +805,7 @@ sections to list the default key-binding
+ 
+ .SH DEFAULT KEY BINDINGS IN EMACS MODE
+ 
+-The following default key bindings, which can be overriden by
++The following default key bindings, which can be overridden by
+ the Tecla configuration file, are designed to mimic most of
+ the bindings of the unix \f3tcsh\f1 shell, when it is in
+ emacs editing mode.
+--- a/man/func/cpl_complete_word.in
++++ b/man/func/cpl_complete_word.in
+@@ -185,7 +185,7 @@ string of the start of the word that is
+ equal \f3word_end\f1 if a zero-length string is being completed. The
+ \f3suffix\f1 argument is the string that would have to be appended to
+ the incomplete word to complete it.  If this needs any quoting
+-(eg. the addition of backslashes before special charaters) to be valid
++(eg. the addition of backslashes before special characters) to be valid
+ within the displayed input line, this should be included. A copy of
+ the suffix string is allocated internally, so there is no need to
+ maintain your copy of the string after \f3cpl_add_completion()\f1

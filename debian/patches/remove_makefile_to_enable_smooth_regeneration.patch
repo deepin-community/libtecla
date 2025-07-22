@@ -1,0 +1,20 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Updated: Mon, 08 Sep 2014 09:18:09 +0200
+Bug-Debian: http://bugs.debian.org/760790
+Description: Avoid recursive make call by simply removing redundant Makefile
+
+--- a/Makefile
++++ /dev/null
+@@ -1,12 +0,0 @@
+-default:
+-	./configure
+-	$(MAKE)
+-
+-distclean:
+-	./configure --without-man-pages
+-	$(MAKE) $@
+-
+-normal reentrant demos demos_r clean install_lib install_bin install_inc \
+- install_man install:
+-	./configure
+-	$(MAKE) $@

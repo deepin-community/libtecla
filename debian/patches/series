@@ -1,0 +1,6 @@
+add-destdir.patch
+manpage-fix.patch
+kfreebsd+hurd.patch
+remove_makefile_to_enable_smooth_regeneration.patch
+spelling.patch
+libtecla-fix-eof-handling.patch
