@@ -1,0 +1,32 @@
+Author: Guido Berhoerster <guido+debian.org@berhoerster.name>
+Last-Update: Mon, 21 Aug 2017 21:43:09 +0000
+Bug-Debian: https://bugs.debian.org/872865
+Description: Enable gl_get_line() to detect EOF
+
+--- a/getline.c
++++ b/getline.c
+@@ -3296,6 +3296,7 @@ static GlReadStatus gl_read_input(GetLin
+ static GlReadStatus gl_read_unmasked(GetLine *gl, int fd, char *c)
+ {
+   int nread;  /* The return value of read() */
++  int saved_errno;
+ /*
+  * Unblock the signals that we are trapping, while waiting for I/O.
+  */
+@@ -3307,6 +3308,7 @@ static GlReadStatus gl_read_unmasked(Get
+   do {
+     errno = 0;
+     nread = read(fd, c, 1);
++    saved_errno = errno;
+   } while(nread < 0 && errno==EINTR);
+ /*
+  * Block all of the signals that we are trapping.
+@@ -3319,7 +3321,7 @@ static GlReadStatus gl_read_unmasked(Get
+   case 1:
+     return GL_READ_OK;
+   case 0:
+-    return (isatty(fd) || errno != 0) ? GL_READ_BLOCKED : GL_READ_EOF;
++    return (isatty(fd) || saved_errno != 0) ? GL_READ_BLOCKED : GL_READ_EOF;
+   default:
+     return GL_READ_ERROR;
+   };

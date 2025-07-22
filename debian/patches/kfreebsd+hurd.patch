@@ -1,0 +1,23 @@
+Author: Andreas Tille <tille@debian.org>
+Bug-Debian: http://bugs.debian.org/621887,
+	    http://bugs.debian.org/651937
+Forwarded: no
+Last-Update: Wed, 14 Dec 2011 08:08:44 +0100
+Description: Follow a hint of Cyril Brulebois <kibi@debian.org>
+ (thanks Cyril) to add "*kfreebsd-*" where only "*linux*" was mentioned
+ in configure.in and run `autoreconf -vfi` afterwards.
+ .
+ In the same line was the patch supplied by Pino Toscano <pino@debian.org>
+ to build properly on GNU/Hurd
+
+--- a/configure.in
++++ b/configure.in
+@@ -469,7 +469,7 @@ case $target in
+   FILE_MANDIR="man4"
+   FILE_MANEXT="4"
+   ;;
+-*linux*)
++*linux*|*kfreebsd-*|*-*-gnu*)
+   SHARED_EXT=".so.${MAJOR_VER}.${MINOR_VER}.${MICRO_VER}"
+   SHARED_ALT=".so .so.${MAJOR_VER}"
+ 

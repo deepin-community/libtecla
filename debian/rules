@@ -1,4 +1,20 @@
 #!/usr/bin/make -f
+# debian/rules file for tecla
+export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+export STRIPPROG=true
 
 %:
-	dh $@
+	dh $@ --no-parallel
+
+override_dh_install:
+	dh_install
+	d-shlibmove --commit \
+		    --t64 \
+		    --multiarch \
+		    --devunversioned \
+		    --override s/libncurses6-dev/libncurses-dev/ \
+		    --exclude-la \
+		    --movedev "debian/tmp/usr/include/*.h" usr/include/ \
+		    debian/tmp/usr/lib/*/*.so

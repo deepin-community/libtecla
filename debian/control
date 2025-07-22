@@ -1,15 +1,79 @@
-Source: template-repository
-Section: unknown
+Source: libtecla
+Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
+Uploaders: Scott Christley <schristley@mac.com>,
+           Andreas Tille <tille@debian.org>
+Section: science
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: dpkg-dev (>= 1.22.5), debhelper-compat (= 13),
+               d-shlibs (>= 0.106~)
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/med-team/libtecla
+Vcs-Git: https://salsa.debian.org/med-team/libtecla.git
+Homepage: https://www.astro.caltech.edu/~mcs/tecla/
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: libtecla-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Section: libdevel
+Depends: libtecla1t64 (= ${binary:Version}),
+         ${misc:Depends}
+Multi-Arch: same
+Description: interactive command line editing facilities (development)
+ The tecla library provides UNIX and LINUX programs with interactive
+ command line editing facilities, similar to those of the UNIX tcsh
+ shell. In addition to simple command-line editing, it supports recall
+ of previously entered command lines, TAB completion of file names or
+ other tokens, and in-line wild-card expansion of filenames. The
+ internal functions which perform file-name completion and wild-card
+ expansion are also available externally for optional use by programs.
+ .
+ In addition, the library includes a path-searching module. This allows
+ an application to provide completion and lookup of files located in
+ UNIX style paths. Although not built into the line editor by default,
+ it can easily be called from custom tab-completion callback
+ functions. This was originally conceived for completing the names of
+ executables and providing a way to look up their locations in the
+ user's PATH environment variable, but it can easily be asked to look
+ up and complete other types of files in any list of directories.
+ .
+ Note that special care has been taken to allow the use of this library
+ in threaded programs. The option to enable this is discussed in the
+ Makefile, and specific discussions of thread safety are presented in
+ the included man pages.
+ .
+ This package contains the development files and documentation for
+ developing applications using the tecla library.
+
+Package: libtecla1t64
+Provides: ${t64:Provides}
+Replaces: libtecla1
+Conflicts: libtecla1 (<< ${source:Version})
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Multi-Arch: same
+Description: interactive command line editing facilities
+ The tecla library provides UNIX and LINUX programs with interactive
+ command line editing facilities, similar to those of the UNIX tcsh
+ shell. In addition to simple command-line editing, it supports recall
+ of previously entered command lines, TAB completion of file names or
+ other tokens, and in-line wild-card expansion of filenames. The
+ internal functions which perform file-name completion and wild-card
+ expansion are also available externally for optional use by programs.
+ .
+ In addition, the library includes a path-searching module. This allows
+ an application to provide completion and lookup of files located in
+ UNIX style paths. Although not built into the line editor by default,
+ it can easily be called from custom tab-completion callback
+ functions. This was originally conceived for completing the names of
+ executables and providing a way to look up their locations in the
+ user's PATH environment variable, but it can easily be asked to look
+ up and complete other types of files in any list of directories.
+ .
+ Note that special care has been taken to allow the use of this library
+ in threaded programs. The option to enable this is discussed in the
+ Makefile, and specific discussions of thread safety are presented in
+ the included man pages.
+ .
+ This package contains the runtime libraries.

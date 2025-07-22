@@ -1,0 +1,12 @@
+Correct control characters in man page
+--- a/man/func/gl_get_line.in
++++ b/man/func/gl_get_line.in
+@@ -1656,7 +1656,7 @@ the input line to be unnecessarily dupli
+ had been written to the terminal.  Such a signal handler,
+ when it does write to the terminal, should be sure to start
+ a new line at the start of its first write, by writing a
+-'\\n' character, and should be sure to leave the cursor on a
++\f3\\n\f1 character, and should be sure to leave the cursor on a
+ new line before returning. If the signal arrives while the
+ user is entering a line that only occupies a signal terminal
+ line, or if the cursor is on the last terminal line of a

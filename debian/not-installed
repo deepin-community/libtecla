@@ -1,0 +1,6 @@
+# That name is too generic and it was never used inside the Debian package
+usr/bin/enhance
+usr/share/man/man1/enhance.1
+# Seems here is some flaw in d-shlibmove.  These files seem to be copied for whatever reason and are installed.
+usr/lib/*/libtecla_r.a
+usr/lib/*/libtecla_r.so*
