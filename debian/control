@@ -15,7 +15,7 @@ Rules-Requires-Root: no
 Package: libtecla-dev
 Architecture: any
 Section: libdevel
-Depends: libtecla1t64 (= ${binary:Version}),
+Depends: libtecla1 (= ${binary:Version}),
          ${misc:Depends}
 Multi-Arch: same
 Description: interactive command line editing facilities (development)
@@ -44,10 +44,7 @@ Description: interactive command line editing facilities (development)
  This package contains the development files and documentation for
  developing applications using the tecla library.
 
-Package: libtecla1t64
-Provides: ${t64:Provides}
-Replaces: libtecla1
-Conflicts: libtecla1 (<< ${source:Version})
+Package: libtecla1
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},

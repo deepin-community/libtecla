@@ -11,7 +11,6 @@ export STRIPPROG=true
 override_dh_install:
 	dh_install
 	d-shlibmove --commit \
-		    --t64 \
 		    --multiarch \
 		    --devunversioned \
 		    --override s/libncurses6-dev/libncurses-dev/ \
